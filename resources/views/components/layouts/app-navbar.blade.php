@@ -317,7 +317,7 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('profile') }}" class="dropdown-item">
                     <i class="icon-user-plus"></i> My profile
                 </a>
                 <!--
