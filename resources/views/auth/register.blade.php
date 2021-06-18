@@ -1,11 +1,11 @@
 <x-guest-layout>
-
     <!-- Content area -->
     <div class="content d-flex justify-content-center align-items-center">
 
         <!-- Registration form -->
         <form action="{{ route('register') }}" method="POST" class="flex-fill">
             @csrf
+            <input type="hidden" name="access" value="{{ request('token') }}">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card mb-0">
@@ -55,11 +55,66 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                        <input type="text"
+                                               name="address"
+                                               value="{{ old('address') }}"
+                                               class="form-control"
+                                               placeholder="Address" required>
+                                        <div class="form-control-feedback">
+                                            <i class="icon-user-check text-muted"></i>
+                                        </div>
+                                        @error('address')
+                                        <span class="form-text text-danger">
+                                            <i class="icon-cancel-circle2 mr-2"></i> {{ $message }}
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                        <input type="text"
+                                               name="city"
+                                               value="{{ old('city') }}"
+                                               class="form-control"
+                                               placeholder="City" required>
+                                        <div class="form-control-feedback">
+                                            <i class="icon-user-check text-muted"></i>
+                                        </div>
+                                        @error('city')
+                                        <span class="form-text text-danger">
+                                            <i class="icon-cancel-circle2 mr-2"></i> {{ $message }}
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group form-group-feedback form-group-feedback-right">
+                                        <input type="tel"
+                                               name="phone"
+                                               value="{{ old('phone') }}"
+                                               class="form-control"
+                                               placeholder="Phone" required>
+                                        <div class="form-control-feedback">
+                                            <i class="icon-mention text-muted"></i>
+                                        </div>
+                                        @error('phone')
+                                        <span class="form-text text-danger">
+                                            <i class="icon-cancel-circle2 mr-2"></i> {{ $message }}
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
                                     <div class="form-group form-group-feedback form-group-feedback-right">
                                         <input type="email"
                                                name="email"
-                                               value="{{ old('email') }}"
+                                               value="{{ old('email', request('email')) }}"
                                                class="form-control"
                                                placeholder="Your email" required>
                                         <div class="form-control-feedback">

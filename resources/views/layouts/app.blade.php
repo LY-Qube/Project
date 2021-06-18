@@ -14,15 +14,7 @@
     <link href="{{ asset('limitless/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
-    <!-- Core JS files -->
-    <script src="{{ asset('limitless/global/js/main/jquery.min.js') }}"></script>
-    <script src="{{ asset('limitless/global/js/main/bootstrap.bundle.min.js') }}"></script>
-    <!-- /core JS files -->
-
-    <!-- Theme JS files -->
-    <script src="{{ asset('limitless/assets/js/app.js') }}"></script>
-    <!-- /theme JS files -->
-
+    @livewireStyles
 </head>
 
 <body>
@@ -38,8 +30,32 @@
 
     {{ $slot }}
 
+
+    @if (session('success'))
+        <div class="alert alert-teal alert-dismissible mb-2" style="position: fixed; bottom: 15px; left: 15px;z-index: 900">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+            {{ session('success') }}
+        </div>
+    @else
+        <livewire:layouts.alert-success />
+    @endif
+
+
+
 </div>
 <!-- /page content -->
+
+
+<!-- Core JS files -->
+<script src="{{ asset('limitless/global/js/main/jquery.min.js') }}"></script>
+<script src="{{ asset('limitless/global/js/main/bootstrap.bundle.min.js') }}"></script>
+<!-- /core JS files -->
+
+<!-- Theme JS files -->
+<script src="{{ asset('limitless/assets/js/app.js') }}"></script>
+<!-- /theme JS files -->
+
+@livewireScripts
 <script>
     window.addEventListener('offline', (e) => {
         document.getElementById('online-status').innerHTML =

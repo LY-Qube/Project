@@ -14,6 +14,8 @@ use Illuminate\Notifications\Notifiable;
  * @property string password
  * @property string avatar
  * @property string profile_image
+ * @property Information information
+ * @property string job_position
  * Class User
  * @package App\Models
  */
@@ -32,6 +34,7 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
+        'job_position'
     ];
 
     /**
@@ -61,8 +64,18 @@ class User extends Authenticatable
     public function getProfileImageAttribute(): string
     {
         if ($this->avatar){
-            return $this->avatar;
+            return 'storage/' . $this->avatar;
         }
         return "images/user-icon.jpg";
+    }
+
+    public function information()
+    {
+        return $this->hasOne(Information::class);
+    }
+
+    public function registers()
+    {
+        return $this->hasMany(Register::class,'creator_id');
     }
 }

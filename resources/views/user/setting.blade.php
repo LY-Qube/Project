@@ -12,7 +12,7 @@
                 <!-- Sidebar content -->
                 <div class="sidebar-content">
 
-                    <livewire:user.user-card-profile />
+                <livewire:user.user-card-profile />
 
                 </div>
                 <!-- /sidebar content -->
@@ -22,17 +22,16 @@
 
             <!-- Right content -->
             <div class="tab-content flex-1">
-                <div class="tab-pane fade active show">
+                <div class="tab-content flex-1">
+                    <div class="tab-pane fade active show" id="profile">
 
-                    <!-- Profile info -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h6 class="card-title">No data for now</h6>
-                        </div>
+
+                        <livewire:user.setting.information />
+
+
+                        <livewire:user.setting.account />
 
                     </div>
-                    <!-- /profile info -->
-                </div>
 
             </div>
             <!-- /right content -->
